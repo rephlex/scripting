@@ -1,0 +1,7 @@
+# Live record a webradio stream to cd (works with m3u streams, not aac!
+# switch -@ [playlistfile] for playlists. omit "-@" for direct mp3 streams
+# TIL: try sox and record from a soundcard jack :)
+
+mpg123 -@ http://www.sonus.fm:8000/listen.pls?sid=2 --cdr - | wodim -v speed=1 tsize=700M -dao dev=/dev/sr0 -v -pad -data -
+
+
