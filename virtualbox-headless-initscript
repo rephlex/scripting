@@ -1,0 +1,25 @@
+#!/bin/sh
+#/etc/init.d/BeispielVM
+#
+
+#Edit these variables!
+VMUSER=rephlex
+VMNAME="fubar.de"
+
+case "$1" in
+start)
+echo "Starting VirtualBox VM..."
+sudo -H -b -u $VMUSER /usr/bin/VBoxManage startvm "$VMNAME" --type headless
+;;
+stop)
+echo "Saving state of Virtualbox VM..."
+sudo -H -u $VMUSER /usr/bin/VBoxManage controlvm "$VMNAME" savestate
+;;
+*)
+echo "Usage: /etc/init.d/BeispielVM {start|stop}"
+exit 1
+;;
+esac
+
+exit 0
+
